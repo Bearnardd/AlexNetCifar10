@@ -23,7 +23,7 @@ Due to limited computational resources the significantly smaller dataset than Im
 `main.py` - contains parsing arguments as well as main program loop  
 
 ## How to use it?
-The usage is really straightforward. We call `python main.py <flags>` where <flags> indicate chosen flags.
+The usage is really straightforward. We call `python main.py <flags>` where `<flags>` indicate chosen flags.
 
 ### Available flags
 `load_model_path` (default=None) - path to load trained weights  
