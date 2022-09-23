@@ -3,7 +3,6 @@ import torch.nn as nn
 from torch.utils.data import DataLoader, random_split, SubsetRandomSampler
 from torch.optim import Optimizer
 from torchvision import transforms, datasets
-from tqdm import tqdm
 
 from typing import List, Optional, Union
 
@@ -49,6 +48,7 @@ def get_train_val_dataloaders(
     val_ids = indices[limit_idx:]
     if fraction_of_data < 1:
         import numpy as np
+
         fraction_size = int(data_size * fraction_of_data)
         train_ids = np.random.choice(train_ids, fraction_size)
         val_ids = np.random.choice(val_ids, fraction_size)
@@ -60,8 +60,6 @@ def get_train_val_dataloaders(
         num_workers=0,
         sampler=train_ids,
     )
-
-
 
     val_loader = DataLoader(
         dataset=val_dataset,
@@ -84,11 +82,12 @@ def train_model(
     lr_scheduler,
     device,
     verbose,
-    log_freq
+    log_freq,
 ):
     minibatch_loss_list, train_acc_list, val_acc_list = [], [], []
     if verbose:
         from torch.utils.tensorboard import SummaryWriter
+
         writer = SummaryWriter()
         print("Logger created!")
 

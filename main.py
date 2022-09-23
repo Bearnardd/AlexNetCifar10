@@ -10,6 +10,7 @@ from net import AlexNet
 if __name__ == "__main__":
     import argparse
     import time
+
     curr_time = time.time()
 
     parser = argparse.ArgumentParser(description="Pass")
@@ -18,8 +19,8 @@ if __name__ == "__main__":
 
     parser.add_argument("--load_model_path", type=str, default=None)
     parser.add_argument("--save", type=str, default=default_save_path)
-    parser.add_argument("--train", action='store_true')
-    parser.add_argument('--no-train', dest='train', action='store_false')
+    parser.add_argument("--train", action="store_true")
+    parser.add_argument("--no-train", dest="train", action="store_false")
     parser.set_defaults(train=True)
     parser.add_argument("--resize", nargs="+", type=int, default=[70, 70])
     parser.add_argument("--random_crop", nargs="+", type=int, default=[64, 64])
@@ -31,9 +32,9 @@ if __name__ == "__main__":
     parser.add_argument("--device", type=str, default="cpu")
     parser.add_argument("--fraction_of_data", type=float, default=1.0)
     parser.add_argument("--log_freq", type=int, default=50)
-    parser.add_argument("--verbose", action='store_true')
+    parser.add_argument("--verbose", action="store_true")
     parser.set_defaults(verbose=True)
-    parser.add_argument("--no-verbose", dest='verbose', action='store_false')
+    parser.add_argument("--no-verbose", dest="verbose", action="store_false")
 
     args = parser.parse_args()
 
@@ -91,10 +92,11 @@ if __name__ == "__main__":
             lr_scheduler=lr_scheduler,
             device=DEVICE,
             verbose=args.verbose,
-            log_freq=args.log_freq
+            log_freq=args.log_freq,
         )
     if args.save:
         import os
+
         pwd = os.getcwd()
         save_path = os.path.join(pwd, args.save)
         torch.save(alexnet.state_dict(), save_path)
