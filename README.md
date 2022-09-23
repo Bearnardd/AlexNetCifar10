@@ -29,7 +29,6 @@ The usage is really straightforward. We call `python main.py <flags>` where <fla
 `load_model_path` (default=None) - path to load trained weights  
 `save` (default='<cwd>/checkpoints/model_<current_time>.pth') - path to save the model   
 `train` (default=True) - flag controls whether we want to train the model or just used trained model to predict  
-`predict` (default=False) - flag controls whether we want to predict the class of provided input image. Requires to specify input image with --input  
 `resize` (default=[70, 70]) - resize input images before fitting into the model  
 `random_crop` (default=[64, 64]) - random crop input images before fitting into the model  
 `mean` (default=[0.5, 0.5]) - mean for normalization of the input images   
